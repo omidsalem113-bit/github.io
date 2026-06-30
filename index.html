@@ -6,7 +6,7 @@
   <title>امید | دفتر ذهن</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;600&family=Markazi+Text:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;600&family=Markazi+Text:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink: #111;
@@ -17,7 +17,7 @@
       --gold: #b8933a;
       --gold-pale: #f5edd8;
       --border: #e2ddd6;
---ff-title: 'Markazi Text', serif;
+      --ff-title: 'Markazi Text', serif;
       --ff-body: 'Vazirmatn', sans-serif;
     }
 
@@ -30,6 +30,27 @@
       font-family: var(--ff-body);
       font-weight: 300;
       line-height: 1.9;
+      position: relative;
+    }
+
+    .top-frame {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .corner-art {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    .corner-art.top-right { top: 0; right: 0; width: 280px; }
+    .corner-art.bottom-left { bottom: 0; left: 0; width: 280px; transform: rotate(180deg); }
+
+    nav, .hero, .quote-strip, .section-head, .chapters, footer {
+      position: relative;
+      z-index: 1;
     }
 
     nav {
@@ -157,14 +178,17 @@
     }
 
     .hero-right::before {
-      content: '📖';
+      content: '';
       position: absolute;
-      font-size: 18rem;
-      opacity: 0.04;
+      width: 480px;
+      height: 480px;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23b8933a' stroke-width='1.5' opacity='0.18'%3E%3Ccircle cx='200' cy='200' r='150'/%3E%3Ccircle cx='200' cy='200' r='110'/%3E%3Cpath d='M200 50 C260 90 300 140 300 200 C300 260 260 310 200 350 C140 310 100 260 100 200 C100 140 140 90 200 50 Z'/%3E%3Cpath d='M200 90 C150 130 130 165 130 200 C130 235 150 270 200 310 C250 270 270 235 270 200 C270 165 250 130 200 90 Z'/%3E%3Cpath d='M50 200 Q 200 150 350 200'/%3E%3Cpath d='M50 200 Q 200 250 350 200'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
     }
 
     .stat-grid {
@@ -374,10 +398,95 @@
 </head>
 <body>
 
+  <div class="top-frame">
+
+  <!-- Decorative corner illumination (top-right) -->
+  <svg class="corner-art top-right" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#b8933a" stroke-width="1.1">
+      <!-- main vine -->
+      <path d="M280 40 C 230 30, 190 50, 165 90 C 140 130, 130 170, 95 195"/>
+      <path d="M280 10 C 220 5, 175 30, 150 70"/>
+      <!-- flower cluster 1 -->
+      <g transform="translate(230,35)">
+        <circle r="4"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
+        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
+        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
+        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
+        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
+      </g>
+      <!-- leaf -->
+      <path d="M205 55 C 195 60, 190 70, 195 80 C 205 75, 210 65, 205 55 Z"/>
+      <!-- flower cluster 2 -->
+      <g transform="translate(170,95) scale(0.8)">
+        <circle r="4"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
+        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
+        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
+        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
+        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
+      </g>
+      <path d="M150 110 C 138 112, 130 120, 132 130 C 144 128, 152 120, 150 110 Z"/>
+      <!-- flower cluster 3, smaller, trailing -->
+      <g transform="translate(108,175) scale(0.6)">
+        <circle r="4"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
+        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
+        <ellipse cx="-2" cy="9" rx="4" ry="7"/>
+        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
+      </g>
+      <!-- small cloud, floating apart from vine -->
+      <g transform="translate(70,55)" opacity="0.85">
+        <path d="M0 10 C -8 10, -8 0, 0 0 C 1 -6, 11 -6, 13 0 C 20 -1, 22 9, 14 10 Z"/>
+      </g>
+      <!-- tiny bird -->
+      <g transform="translate(48,90)" opacity="0.8">
+        <path d="M0 0 C 5 -4, 10 -3, 14 0 C 10 0, 6 2, 0 0 Z"/>
+        <path d="M14 0 C 18 -3, 24 -2, 28 2"/>
+      </g>
+    </g>
+  </svg>
+
+  <!-- Decorative corner illumination (bottom-left, mirrored) -->
+  <svg class="corner-art bottom-left" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#b8933a" stroke-width="1.1">
+      <path d="M280 40 C 230 30, 190 50, 165 90 C 140 130, 130 170, 95 195"/>
+      <path d="M280 10 C 220 5, 175 30, 150 70"/>
+      <g transform="translate(230,35)">
+        <circle r="4"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
+        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
+        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
+        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
+        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
+      </g>
+      <path d="M205 55 C 195 60, 190 70, 195 80 C 205 75, 210 65, 205 55 Z"/>
+      <g transform="translate(170,95) scale(0.8)">
+        <circle r="4"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
+        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
+        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
+        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
+        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
+      </g>
+      <path d="M150 110 C 138 112, 130 120, 132 130 C 144 128, 152 120, 150 110 Z"/>
+      <g transform="translate(108,175) scale(0.6)">
+        <circle r="4"/>
+        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
+        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
+        <ellipse cx="-2" cy="9" rx="4" ry="7"/>
+        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
+      </g>
+      <g transform="translate(70,55)" opacity="0.85">
+        <path d="M0 10 C -8 10, -8 0, 0 0 C 1 -6, 11 -6, 13 0 C 20 -1, 22 9, 14 10 Z"/>
+      </g>
+    </g>
+  </svg>
+
   <nav>
     <a class="nav-brand" href="#">امید<span>.</span></a>
     <ul class="nav-links">
-      <li><a href="books.html">کتاب‌ها</a></li>
+      <li><a href="#chapters">کتاب‌ها</a></li>
       <li><a href="#chapters">جملات</a></li>
       <li><a href="#chapters">شعر</a></li>
       <li><a href="#chapters">موسیقی</a></li>
@@ -394,7 +503,7 @@
         <em>می‌اندیشم</em>
       </h1>
       <p class="hero-desc">
-        اینجا فضاییه برای ثبت اونچه که ذهنم رو درگیر کرده — از کتاب و شعر تا موسیقی و ایده.
+        فضایی برای ثبت آنچه ذهنم را درگیر کرده — از کتاب و شعر تا موسیقی و ایده.
       </p>
       <a href="#chapters" class="hero-cta">کاوش کن ←</a>
     </div>
@@ -439,6 +548,7 @@
     </blockquote>
     <cite>— حافظ شیرازی، دیوان</cite>
   </div>
+  </div>
 
   <div class="section-head" id="chapters">
     <h2>فصل‌های دفتر</h2>
@@ -446,7 +556,7 @@
   </div>
 
   <div class="chapters">
-    <a class="chapter" href="books.html">
+    <a class="chapter" href="#">
       <div class="chapter-inner">
         <div class="chapter-num">۰۱</div>
         <div class="chapter-icon">📚</div>
