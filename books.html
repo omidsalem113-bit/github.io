@@ -6,7 +6,7 @@
   <title>امید | کتاب‌ها</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;600&family=Markazi+Text:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;600&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink: #111;
@@ -17,7 +17,7 @@
       --gold: #b8933a;
       --gold-pale: #f5edd8;
       --border: #e2ddd6;
---ff-title: 'Markazi Text', serif;
+      --ff-title: 'Aref Ruqaa', serif;
       --ff-body: 'Vazirmatn', sans-serif;
     }
 
@@ -192,10 +192,15 @@
       margin-bottom: 0.75rem;
     }
 
-    .book-icon {
-      font-size: 2.2rem;
+    .book-cover {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 8px;
       margin-bottom: 1rem;
       display: block;
+      border: 1px solid var(--border);
     }
 
     .book-title {
@@ -296,7 +301,7 @@
       <div class="book-spine"></div>
       <div class="book-body">
         <div class="book-genre">راز و معما · ترلر</div>
-        <span class="book-icon">🔍</span>
+        <img class="book-cover" src="https://covers.openlibrary.org/b/id/8739161-L.jpg" alt="راز داوینچی" />
         <div class="book-title">راز داوینچی</div>
         <div class="book-author">دن براون</div>
         <div class="book-footer">
@@ -316,7 +321,7 @@
       <div class="book-spine"></div>
       <div class="book-body">
         <div class="book-genre">کلاسیک · حماسه</div>
-        <span class="book-icon">🔥</span>
+        <img class="book-cover" src="https://covers.openlibrary.org/b/id/8231501-L.jpg" alt="کمدی الهی" />
         <div class="book-title">کمدی الهی</div>
         <div class="book-author">دانته آلیگیری</div>
         <div class="book-footer">
@@ -336,7 +341,7 @@
       <div class="book-spine"></div>
       <div class="book-body">
         <div class="book-genre">کلاسیک · رمانتیک</div>
-        <span class="book-icon">💔</span>
+        <img class="book-cover" src="https://covers.openlibrary.org/b/id/8741761-L.jpg" alt="رنج‌های ورتر جوان" />
         <div class="book-title">رنج‌های ورتر جوان</div>
         <div class="book-author">یوهان ولفگانگ فون گوته</div>
         <div class="book-footer">
@@ -356,7 +361,7 @@
       <div class="book-spine"></div>
       <div class="book-body">
         <div class="book-genre">راز و معما · وحشت</div>
-        <span class="book-icon">🏚️</span>
+        <img class="book-cover" src="https://covers.openlibrary.org/b/id/12648406-L.jpg" alt="تیمارستان متروک" />
         <div class="book-title">تیمارستان متروک</div>
         <div class="book-author">دن پبلاکی</div>
         <div class="book-footer">
@@ -376,7 +381,7 @@
       <div class="book-spine"></div>
       <div class="book-body">
         <div class="book-genre">راز و معما · جنایی</div>
-        <span class="book-icon">🌑</span>
+        <img class="book-cover" src="https://covers.openlibrary.org/b/id/10521505-L.jpg" alt="نجواگر" />
         <div class="book-title">نجواگر</div>
         <div class="book-author">الکس نورث</div>
         <div class="book-footer">
