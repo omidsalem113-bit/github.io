@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>امید | کتاب‌ها</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;600&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #111;
+      --ink-mid: #444;
+      --ink-soft: #888;
+      --paper: #faf9f7;
+      --paper-2: #f3f0eb;
+      --gold: #b8933a;
+      --gold-pale: #f5edd8;
+      --border: #e2ddd6;
+      --ff-title: 'Aref Ruqaa', serif;
+      --ff-body: 'Vazirmatn', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 60px;
+      background: rgba(250,249,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      font-family: var(--ff-title);
+      font-size: 1.4rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-brand span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 8rem 3rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header-left .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .page-header-left .eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .page-header-left h1 {
+      font-family: var(--ff-title);
+      font-size: 2.8rem;
+      color: var(--ink);
+    }
+
+    .page-header-right {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      text-align: left;
+    }
+
+    .count-badge {
+      display: inline-block;
+      background: var(--gold-pale);
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 0.4rem;
+    }
+
+    /* FILTER BAR */
+    .filter-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 3rem;
+      display: flex;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4rem 1.1rem;
+      font-family: var(--ff-body);
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    /* BOOKS GRID */
+    .books-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 3rem 6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .book-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+
+    .book-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
+      border-color: var(--gold);
+    }
+
+    .book-spine {
+      height: 6px;
+      background: linear-gradient(90deg, var(--gold), #d4a853);
+    }
+
+    .book-body {
+      padding: 1.75rem;
+    }
+
+    .book-genre {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .book-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .book-title {
+      font-family: var(--ff-title);
+      font-size: 1.25rem;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+      line-height: 1.5;
+    }
+
+    .book-author {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      margin-bottom: 1.25rem;
+    }
+
+    .book-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stars {
+      display: flex;
+      gap: 2px;
+      font-size: 1rem;
+    }
+
+    .star { color: #ddd; transition: color 0.1s; }
+    .star.filled { color: var(--gold); }
+
+    .book-status {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      font-weight: 400;
+    }
+
+    .status-read {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .page-header { padding: 6rem 1.5rem 2rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .books-grid { padding: 1.5rem; grid-template-columns: 1fr; }
+      .filter-bar { padding: 1rem 1.5rem; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="index.html">امید<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="books.html" class="active">کتاب‌ها</a></li>
+      <li><a href="#">جملات</a></li>
+      <li><a href="#">شعر</a></li>
+      <li><a href="#">موسیقی</a></li>
+      <li><a href="index.html">خانه</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-left">
+      <div class="eyebrow">فصل اول</div>
+      <h1>کتاب‌ها</h1>
+    </div>
+    <div class="page-header-right">
+      <div class="count-badge">📚 ۵ کتاب</div>
+      <div>کتاب‌هایی که خوانده‌ام</div>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active">همه</button>
+    <button class="filter-btn">رمان</button>
+    <button class="filter-btn">کلاسیک</button>
+    <button class="filter-btn">راز و معما</button>
+  </div>
+
+  <div class="books-grid">
+
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-body">
+        <div class="book-genre">راز و معما · ترلر</div>
+        <span class="book-icon">🔍</span>
+        <div class="book-title">راز داوینچی</div>
+        <div class="book-author">دن براون</div>
+        <div class="book-footer">
+          <div class="stars">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star">★</span>
+          </div>
+          <span class="book-status status-read">خوانده شده</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-body">
+        <div class="book-genre">کلاسیک · حماسه</div>
+        <span class="book-icon">🔥</span>
+        <div class="book-title">کمدی الهی</div>
+        <div class="book-author">دانته آلیگیری</div>
+        <div class="book-footer">
+          <div class="stars">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+          </div>
+          <span class="book-status status-read">خوانده شده</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-body">
+        <div class="book-genre">کلاسیک · رمانتیک</div>
+        <span class="book-icon">💔</span>
+        <div class="book-title">رنج‌های ورتر جوان</div>
+        <div class="book-author">یوهان ولفگانگ فون گوته</div>
+        <div class="book-footer">
+          <div class="stars">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star">★</span>
+          </div>
+          <span class="book-status status-read">خوانده شده</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-body">
+        <div class="book-genre">راز و معما · وحشت</div>
+        <span class="book-icon">🏚️</span>
+        <div class="book-title">تیمارستان متروک</div>
+        <div class="book-author">دن پبلاکی</div>
+        <div class="book-footer">
+          <div class="stars">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star">★</span>
+          </div>
+          <span class="book-status status-read">خوانده شده</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-body">
+        <div class="book-genre">راز و معما · جنایی</div>
+        <span class="book-icon">🌑</span>
+        <div class="book-title">نجواگر</div>
+        <div class="book-author">الکس نورث</div>
+        <div class="book-footer">
+          <div class="stars">
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+            <span class="star filled">★</span>
+          </div>
+          <span class="book-status status-read">خوانده شده</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    دفتر شخصی امید &nbsp;·&nbsp; ساخته شده با دقت و علاقه
+  </footer>
+
+  <script>
+    const btns = document.querySelectorAll('.filter-btn');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
