@@ -511,6 +511,27 @@
 </head>
 <body>
 
+  <div class="drawer-overlay" id="overlay"></div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-brand">دفتر امید</div>
+    <div class="drawer-item">
+      <button class="drawer-link" id="books-btn">
+        📚 کتاب‌ها
+        <span class="arrow">›</span>
+      </button>
+      <div class="drawer-sub" id="sub-books">
+        <a href="books.html">کتاب‌هایی که خوندم</a>
+        <a href="#">کتاب‌هایی که خوندم و دوستشون داشتم</a>
+        <a href="#">کتاب‌هایی که خوندم و دوستشون نداشتم</a>
+        <a href="#">کتاب‌هایی که می‌خوام بخونم</a>
+      </div>
+    </div>
+    <div class="drawer-item"><a class="drawer-link" href="#">✍️ جملات</a></div>
+    <div class="drawer-item"><a class="drawer-link" href="#">🌿 شعر</a></div>
+    <div class="drawer-item"><a class="drawer-link" href="#">🎵 موسیقی</a></div>
+    <div class="drawer-item"><a class="drawer-link" href="#">💭 درباره من</a></div>
+  </div>
+
   <div class="top-frame">
 
   <!-- Decorative corner illumination (top-right) -->
@@ -596,44 +617,9 @@
     </g>
   </svg>
 
-  <div class="drawer-overlay" id="overlay"></div>
-
-  <div class="drawer" id="drawer">
-    <div class="drawer-brand">دفتر امید</div>
-
-    <div class="drawer-item">
-      <button class="drawer-link" id="books-btn">
-        📚 کتاب‌ها
-        <span class="arrow">›</span>
-      </button>
-      <div class="drawer-sub" id="sub-books">
-        <a href="books.html">کتاب‌هایی که خوندم</a>
-        <a href="#">کتاب‌هایی که خوندم و دوستشون داشتم</a>
-        <a href="#">کتاب‌هایی که خوندم و دوستشون نداشتم</a>
-        <a href="#">کتاب‌هایی که می‌خوام بخونم</a>
-      </div>
-    </div>
-
-    <div class="drawer-item">
-      <a class="drawer-link" href="#">✍️ جملات</a>
-    </div>
-
-    <div class="drawer-item">
-      <a class="drawer-link" href="#">🌿 شعر</a>
-    </div>
-
-    <div class="drawer-item">
-      <a class="drawer-link" href="#">🎵 موسیقی</a>
-    </div>
-
-    <div class="drawer-item">
-      <a class="drawer-link" href="#">💭 درباره من</a>
-    </div>
-  </div>
-
   <nav>
     <a class="nav-brand" href="#">امید<span>.</span></a>
-    <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
+    <button class="hamburger" id="hamburger">
       <span></span>
       <span></span>
       <span></span>
@@ -713,4 +699,7 @@
         <div class="chapter-title">کتاب‌ها</div>
         <div class="chapter-desc">کتاب‌هایی که خوانده‌ام، دارم می‌خوانم، یا خواهم خواند — با یادداشت‌های شخصی.</div>
       </div>
-      <div class="chapter-arrow">←
+      <div class="chapter-arrow">←</div>
+    </a>
+    <a class="chapter" href="#">
+      <div class="chapter-inne
