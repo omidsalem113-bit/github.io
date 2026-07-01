@@ -6,7 +6,7 @@
   <title>امید | دفتر ذهن</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;600&family=Markazi+Text:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;600&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink: #111;
@@ -17,7 +17,7 @@
       --gold: #b8933a;
       --gold-pale: #f5edd8;
       --border: #e2ddd6;
-      --ff-title: 'Markazi Text', serif;
+      --ff-title: 'Aref Ruqaa', serif;
       --ff-body: 'Vazirmatn', sans-serif;
     }
 
@@ -30,28 +30,9 @@
       font-family: var(--ff-body);
       font-weight: 300;
       line-height: 1.9;
-      position: relative;
     }
 
-    .top-frame {
-      position: relative;
-    }
-
-    .corner-art {
-      position: absolute;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.55;
-    }
-
-    .corner-art.top-right { top: 60px; right: 0; width: 280px; }
-    .corner-art.bottom-left { bottom: 0; left: 0; width: 280px; transform: rotate(180deg); }
-
-    nav, .hero, .quote-strip, .section-head, .chapters, footer {
-      position: relative;
-      z-index: 1;
-    }
-
+    /* ══ NAV ══ */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -59,7 +40,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1.5rem;
+      padding: 0 3rem;
       height: 60px;
       background: rgba(250,249,247,0.92);
       backdrop-filter: blur(12px);
@@ -71,128 +52,31 @@
       font-size: 1.4rem;
       color: var(--ink);
       text-decoration: none;
+      letter-spacing: 0.03em;
     }
 
-    .nav-brand span { color: var(--gold); }
+    .nav-brand span {
+      color: var(--gold);
+    }
 
-    .hamburger {
+    .nav-links {
       display: flex;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 0.5rem;
-      background: none;
-      border: none;
-      z-index: 310;
+      gap: 2rem;
+      list-style: none;
     }
 
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--ink);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* OVERLAY */
-    .drawer-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-      z-index: 290;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-
-    .drawer-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* DRAWER */
-    .drawer {
-      position: fixed;
-      top: 0;
-      right: -320px;
-      width: 300px;
-      height: 100vh;
-      background: var(--paper);
-      z-index: 300;
-      border-left: 1px solid var(--border);
-      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      overflow-y: auto;
-      padding: 5rem 0 2rem;
-    }
-
-    .drawer.open { right: 0; }
-
-    .drawer-brand {
-      padding: 0 1.75rem 1.5rem;
-      font-family: var(--ff-title);
-      font-size: 1.2rem;
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
       color: var(--ink-soft);
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 1rem;
-    }
-
-    .drawer-item {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .drawer-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.75rem;
-      font-size: 1rem;
-      color: var(--ink);
       text-decoration: none;
-      font-family: var(--ff-title);
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      background: none;
-      border: none;
-      width: 100%;
-      text-align: right;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
     }
 
-    .drawer-link:hover { background: var(--gold-pale); color: var(--gold); }
+    .nav-links a:hover { color: var(--gold); }
 
-    .drawer-link .arrow {
-      font-size: 0.75rem;
-      color: var(--ink-soft);
-      transition: transform 0.25s;
-    }
-
-    .drawer-link.expanded .arrow { transform: rotate(90deg); }
-
-    .drawer-sub {
-      display: none;
-      background: var(--paper-2);
-    }
-
-    .drawer-sub.open { display: block; }
-
-    .drawer-sub a {
-      display: block;
-      padding: 0.65rem 2.5rem;
-      font-size: 0.88rem;
-      color: var(--ink-mid);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      transition: color 0.2s, background 0.2s;
-    }
-
-    .drawer-sub a:last-child { border-bottom: none; }
-    .drawer-sub a:hover { color: var(--gold); background: var(--gold-pale); }
-
+    /* ══ HERO ══ */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -204,26 +88,14 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      text-align: center;
       padding: 5rem 4rem 5rem 5rem;
       border-left: 1px solid var(--border);
-    }
-
-    .hero-grand {
-      font-family: var(--ff-title);
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: var(--gold);
-      line-height: 2.3;
-      max-width: 460px;
-      margin-bottom: 2rem;
     }
 
     .hero-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -258,7 +130,7 @@
       color: var(--ink-mid);
       max-width: 380px;
       line-height: 2;
-      margin: 0 auto 3rem;
+      margin-bottom: 3rem;
     }
 
     .hero-cta {
@@ -290,23 +162,20 @@
     }
 
     .hero-right::before {
-      content: '';
+      content: '📖';
       position: absolute;
-      width: 480px;
-      height: 480px;
+      font-size: 18rem;
+      opacity: 0.04;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23b8933a' stroke-width='1.5' opacity='0.18'%3E%3Ccircle cx='200' cy='200' r='150'/%3E%3Ccircle cx='200' cy='200' r='110'/%3E%3Cpath d='M200 50 C260 90 300 140 300 200 C300 260 260 310 200 350 C140 310 100 260 100 200 C100 140 140 90 200 50 Z'/%3E%3Cpath d='M200 90 C150 130 130 165 130 200 C130 235 150 270 200 310 C250 270 270 235 270 200 C270 165 250 130 200 90 Z'/%3E%3Cpath d='M50 200 Q 200 150 350 200'/%3E%3Cpath d='M50 200 Q 200 250 350 200'/%3E%3C/g%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-size: contain;
     }
 
     .stat-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      gap: 1.5rem;
       width: 100%;
       max-width: 340px;
       position: relative;
@@ -321,7 +190,10 @@
       text-align: center;
     }
 
-    .stat-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .stat-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
 
     .stat-num {
       font-family: var(--ff-title);
@@ -332,8 +204,9 @@
     }
 
     .stat-label {
-      font-size: 0.74rem;
+      font-size: 0.75rem;
       color: var(--ink-soft);
+      letter-spacing: 0.04em;
     }
 
     .stat-card.wide {
@@ -345,10 +218,10 @@
       padding: 1.25rem 1.5rem;
     }
 
-    .stat-card.wide .stat-icon { font-size: 1.4rem; margin: 0; }
+    .stat-card.wide .stat-icon { font-size: 1.5rem; margin: 0; }
 
+    .wide-text { flex: 1; }
     .wide-text .stat-label { display: block; margin-bottom: 0.2rem; }
-
     .wide-text .stat-quote {
       font-family: var(--ff-title);
       font-size: 0.95rem;
@@ -356,28 +229,7 @@
       line-height: 1.7;
     }
 
-    .quote-strip {
-      background: var(--ink);
-      color: #fff;
-      padding: 4rem 3rem;
-      text-align: center;
-    }
-
-    .quote-strip blockquote {
-      font-family: var(--ff-title);
-      font-size: clamp(1.15rem, 2.5vw, 1.65rem);
-      line-height: 2.1;
-      max-width: 700px;
-      margin: 0 auto 1rem;
-    }
-
-    .quote-strip cite {
-      font-size: 0.8rem;
-      color: var(--gold);
-      letter-spacing: 0.08em;
-      font-style: normal;
-    }
-
+    /* ══ SECTION HEADER ══ */
     .section-head {
       max-width: 1100px;
       margin: 0 auto;
@@ -391,6 +243,7 @@
     .section-head h2 {
       font-family: var(--ff-title);
       font-size: 2rem;
+      color: var(--ink);
     }
 
     .section-head p {
@@ -398,12 +251,14 @@
       color: var(--ink-soft);
     }
 
+    /* ══ CHAPTERS GRID ══ */
     .chapters {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 3rem 6rem;
+      padding: 2.5rem 3rem 6rem;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 0;
     }
 
     .chapter {
@@ -412,6 +267,7 @@
       border-bottom: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
+      transition: background 0.2s;
       position: relative;
       overflow: hidden;
     }
@@ -483,11 +339,35 @@
       opacity: 0;
       transform: translateX(-6px);
       transition: opacity 0.2s, transform 0.2s;
-      z-index: 1;
     }
 
     .chapter:hover .chapter-arrow { opacity: 1; transform: translateX(0); }
 
+    /* ══ QUOTE STRIP ══ */
+    .quote-strip {
+      background: var(--ink);
+      color: #fff;
+      padding: 4rem 3rem;
+      text-align: center;
+    }
+
+    .quote-strip blockquote {
+      font-family: var(--ff-title);
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      line-height: 2;
+      max-width: 700px;
+      margin: 0 auto 1rem;
+      font-weight: 400;
+    }
+
+    .quote-strip cite {
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      font-style: normal;
+    }
+
+    /* ══ FOOTER ══ */
     footer {
       text-align: center;
       padding: 2rem;
@@ -496,13 +376,14 @@
       color: var(--ink-soft);
     }
 
+    /* ══ MOBILE ══ */
     @media (max-width: 768px) {
       nav { padding: 0 1.5rem; }
-      .nav-links { gap: 1rem; }
+      .nav-links { gap: 1.25rem; }
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding: 4rem 1.75rem; border-left: none; }
       .hero-right { display: none; }
-      .chapters { grid-template-columns: 1fr; padding: 0 1.5rem 4rem; }
+      .chapters { grid-template-columns: 1fr; padding: 1.5rem; }
       .chapter:nth-child(3n+1) { border-right: none; }
       .section-head { padding: 3rem 1.5rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     }
@@ -510,127 +391,20 @@
 </head>
 <body>
 
-  <div class="drawer-overlay" id="overlay"></div>
-  <div class="drawer" id="drawer">
-    <div class="drawer-brand">دفتر امید</div>
-    <div class="drawer-item">
-      <button class="drawer-link" id="books-btn">
-        📚 کتاب‌ها
-        <span class="arrow">›</span>
-      </button>
-      <div class="drawer-sub" id="sub-books">
-        <a href="books.html">کتاب‌هایی که خوندم</a>
-        <a href="#">کتاب‌هایی که خوندم و دوستشون داشتم</a>
-        <a href="#">کتاب‌هایی که خوندم و دوستشون نداشتم</a>
-        <a href="#">کتاب‌هایی که می‌خوام بخونم</a>
-      </div>
-    </div>
-    <div class="drawer-item"><a class="drawer-link" href="#">✍️ جملات</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#">🌿 شعر</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#">🎵 موسیقی</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#">💭 درباره من</a></div>
-  </div>
-
-  <div class="top-frame">
-
-  <!-- Decorative corner illumination (top-right) -->
-  <svg class="corner-art top-right" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#b8933a" stroke-width="1.1">
-      <!-- main vine -->
-      <path d="M280 40 C 230 30, 190 50, 165 90 C 140 130, 130 170, 95 195"/>
-      <path d="M280 10 C 220 5, 175 30, 150 70"/>
-      <!-- flower cluster 1 -->
-      <g transform="translate(230,35)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <!-- leaf -->
-      <path d="M205 55 C 195 60, 190 70, 195 80 C 205 75, 210 65, 205 55 Z"/>
-      <!-- flower cluster 2 -->
-      <g transform="translate(170,95) scale(0.8)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <path d="M150 110 C 138 112, 130 120, 132 130 C 144 128, 152 120, 150 110 Z"/>
-      <!-- flower cluster 3, smaller, trailing -->
-      <g transform="translate(108,175) scale(0.6)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <!-- small cloud, floating apart from vine -->
-      <g transform="translate(70,55)" opacity="0.85">
-        <path d="M0 10 C -8 10, -8 0, 0 0 C 1 -6, 11 -6, 13 0 C 20 -1, 22 9, 14 10 Z"/>
-      </g>
-      <!-- tiny bird -->
-      <g transform="translate(48,90)" opacity="0.8">
-        <path d="M0 0 C 5 -4, 10 -3, 14 0 C 10 0, 6 2, 0 0 Z"/>
-        <path d="M14 0 C 18 -3, 24 -2, 28 2"/>
-      </g>
-    </g>
-  </svg>
-
-  <!-- Decorative corner illumination (bottom-left, mirrored) -->
-  <svg class="corner-art bottom-left" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#b8933a" stroke-width="1.1">
-      <path d="M280 40 C 230 30, 190 50, 165 90 C 140 130, 130 170, 95 195"/>
-      <path d="M280 10 C 220 5, 175 30, 150 70"/>
-      <g transform="translate(230,35)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <path d="M205 55 C 195 60, 190 70, 195 80 C 205 75, 210 65, 205 55 Z"/>
-      <g transform="translate(170,95) scale(0.8)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <path d="M150 110 C 138 112, 130 120, 132 130 C 144 128, 152 120, 150 110 Z"/>
-      <g transform="translate(108,175) scale(0.6)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <g transform="translate(70,55)" opacity="0.85">
-        <path d="M0 10 C -8 10, -8 0, 0 0 C 1 -6, 11 -6, 13 0 C 20 -1, 22 9, 14 10 Z"/>
-      </g>
-    </g>
-  </svg>
-
   <nav>
     <a class="nav-brand" href="#">امید<span>.</span></a>
-    <a href="menu.html" class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </a>
+    <ul class="nav-links">
+      <li><a href="#chapters">کتاب‌ها</a></li>
+      <li><a href="#chapters">جملات</a></li>
+      <li><a href="#chapters">شعر</a></li>
+      <li><a href="#chapters">موسیقی</a></li>
+      <li><a href="#chapters">درباره</a></li>
+    </ul>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <p class="hero-grand">
-        ای کسانی که دیده‌ی بصیرت را مسخر خویش کرده‌اید،<br/>
-        حقیقتی را دریابید که در زیر حجاب این اشعار اسرارآمیز است
-      </p>
       <span class="hero-tag">دفتر شخصی</span>
       <h1 class="hero-title">
         آنچه<br/>
@@ -676,6 +450,7 @@
     </div>
   </section>
 
+  <!-- QUOTE STRIP -->
   <div class="quote-strip">
     <blockquote>
       الا یا ایها الساقی ادر کأساً و ناولها<br/>
@@ -683,14 +458,15 @@
     </blockquote>
     <cite>— حافظ شیرازی، دیوان</cite>
   </div>
-  </div>
 
+  <!-- CHAPTERS -->
   <div class="section-head" id="chapters">
     <h2>فصل‌های دفتر</h2>
     <p>هر بخش دریچه‌ای به بخشی از ذهن من است</p>
   </div>
 
   <div class="chapters">
+
     <a class="chapter" href="#">
       <div class="chapter-inner">
         <div class="chapter-num">۰۱</div>
@@ -700,6 +476,62 @@
       </div>
       <div class="chapter-arrow">←</div>
     </a>
+
     <a class="chapter" href="#">
       <div class="chapter-inner">
-        <div class="chapter-
+        <div class="chapter-num">۰۲</div>
+        <div class="chapter-icon">✍️</div>
+        <div class="chapter-title">جملات برگزیده</div>
+        <div class="chapter-desc">پاراگراف‌ها و جملاتی که هنگام خواندن مکث کردم و دوباره خواندمشان.</div>
+      </div>
+      <div class="chapter-arrow">←</div>
+    </a>
+
+    <a class="chapter" href="#">
+      <div class="chapter-inner">
+        <div class="chapter-num">۰۳</div>
+        <div class="chapter-icon">🌿</div>
+        <div class="chapter-title">ابیات</div>
+        <div class="chapter-desc">شعر فارسی کلاسیک — حافظ، سعدی، رومی — ابیاتی که حفظشان هستم.</div>
+      </div>
+      <div class="chapter-arrow">←</div>
+    </a>
+
+    <a class="chapter" href="#">
+      <div class="chapter-inner">
+        <div class="chapter-num">۰۴</div>
+        <div class="chapter-icon">🖋️</div>
+        <div class="chapter-title">نویسندگان</div>
+        <div class="chapter-desc">نویسندگان و شاعرانی که دیدگاهم را شکل داده‌اند.</div>
+      </div>
+      <div class="chapter-arrow">←</div>
+    </a>
+
+    <a class="chapter" href="#">
+      <div class="chapter-inner">
+        <div class="chapter-num">۰۵</div>
+        <div class="chapter-icon">🎵</div>
+        <div class="chapter-title">موسیقی</div>
+        <div class="chapter-desc">آهنگ‌هایی که تکرار می‌کنم — از کلاسیک ایرانی تا هر چیز دیگری که به دلم می‌نشیند.</div>
+      </div>
+      <div class="chapter-arrow">←</div>
+    </a>
+
+    <a class="chapter" href="#">
+      <div class="chapter-inner">
+        <div class="chapter-num">۰۶</div>
+        <div class="chapter-icon">💭</div>
+        <div class="chapter-title">طرز تفکر</div>
+        <div class="chapter-desc">ایده‌ها و نگاه‌هایی که طرز دیدنم را تغییر داده‌اند.</div>
+      </div>
+      <div class="chapter-arrow">←</div>
+    </a>
+
+  </div>
+
+  <footer>
+    دفتر شخصی امید &nbsp;·&nbsp; ساخته شده با دقت و علاقه
+  </footer>
+
+</body>
+</html>
