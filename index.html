@@ -515,20 +515,20 @@
     <div class="drawer-brand">دفتر امید</div>
     <div class="drawer-item">
       <button class="drawer-link" id="books-btn">
-        📚 کتاب‌ها
+         کتاب‌ها
         <span class="arrow">›</span>
       </button>
       <div class="drawer-sub" id="sub-books">
-        <a href="books.html">کتاب‌هایی که خوندم</a>
-        <a href="#">کتاب‌هایی که خوندم و دوستشون داشتم</a>
-        <a href="#">کتاب‌هایی که خوندم و دوستشون نداشتم</a>
-        <a href="#">کتاب‌هایی که می‌خوام بخونم</a>
+        <a href="books.html">کتابایی که خوندم</a>
+        <a href="#">کتابایی که خوندم و دوستشون داشتم</a>
+        <a href="#">کتابایی که خوندم و دوستشون نداشتم</a>
+        <a href="#">کتابایی که می‌خوام بخونم</a>
       </div>
     </div>
-    <div class="drawer-item"><a class="drawer-link" href="#">✍️ جملات</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#">🌿 شعر</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#">🎵 موسیقی</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#">💭 درباره من</a></div>
+    <div class="drawer-item"><a class="drawer-link" href="#"> جملات</a></div>
+    <div class="drawer-item"><a class="drawer-link" href="#"> شعر</a></div>
+    <div class="drawer-item"><a class="drawer-link" href="#"> موسیقی</a></div>
+    <div class="drawer-item"><a class="drawer-link" href="#"> درباره من</a></div>
   </div>
 
   <div class="top-frame">
@@ -616,13 +616,34 @@
     </g>
   </svg>
 
+  <div class="drawer-overlay" id="overlay"></div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-brand">فهرست</div>
+    <div class="drawer-item">
+      <button class="drawer-link" id="books-btn">
+        کتاب‌ها
+        <span class="arrow">›</span>
+      </button>
+      <div class="drawer-sub" id="sub-books">
+        <a href="books.html">کتاب‌هایی که خوندم</a>
+        <a href="#">کتاب‌هایی که دوستشون داشتم</a>
+        <a href="#">کتاب‌هایی که دوستشون نداشتم</a>
+        <a href="#">کتاب‌هایی که می‌خوام بخونم</a>
+      </div>
+    </div>
+    <div class="drawer-item"><a class="drawer-link" href="#">جملات</a></div>
+    <div class="drawer-item"><a class="drawer-link" href="#">شعر</a></div>
+    <div class="drawer-item"><a class="drawer-link" href="#">موسیقی</a></div>
+    <div class="drawer-item"><a class="drawer-link" href="#">درباره من</a></div>
+  </div>
+
   <nav>
-    <a class="nav-brand" href="#">امید<span>.</span></a>
-    <a href="menu.html" class="hamburger">
+    <a href="#" class="hamburger" id="hamburger">
       <span></span>
       <span></span>
       <span></span>
     </a>
+    <a class="nav-brand" href="#">امید<span>.</span></a>
   </nav>
 
   <section class="hero">
@@ -750,6 +771,32 @@
   <footer>
     دفتر شخصی امید &nbsp;·&nbsp; ساخته شده با دقت و علاقه
   </footer>
+
+  <script>
+    var hamburger = document.getElementById('hamburger');
+    var drawer = document.getElementById('drawer');
+    var overlay = document.getElementById('overlay');
+    var booksBtn = document.getElementById('books-btn');
+    var subBooks = document.getElementById('sub-books');
+
+    hamburger.addEventListener('click', function(e) {
+      e.preventDefault();
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('open');
+      hamburger.classList.toggle('open');
+    });
+
+    overlay.addEventListener('click', function() {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+
+    booksBtn.addEventListener('click', function() {
+      subBooks.classList.toggle('open');
+      this.classList.toggle('expanded');
+    });
+  </script>
 
 </body>
 </html>
