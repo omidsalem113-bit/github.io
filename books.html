@@ -154,6 +154,7 @@
       padding: 1.5rem 3rem;
       display: flex;
       gap: 0.75rem;
+      flex-wrap: wrap;
       border-bottom: 1px solid var(--border);
     }
 
@@ -288,19 +289,10 @@
     .book-footer {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       padding-top: 1rem;
       border-top: 1px solid var(--border);
     }
-
-    .stars {
-      display: flex;
-      gap: 2px;
-      font-size: 0.95rem;
-    }
-
-    .star { color: #ddd; }
-    .star.filled { color: var(--gold); }
 
     .book-status {
       font-size: 0.72rem;
@@ -349,7 +341,7 @@
       <h1>کتاب‌ها</h1>
     </div>
     <div>
-      <div class="count-badge">📚 ۵ کتاب</div>
+      <div class="count-badge">📚 ۸۵ کتاب</div>
     </div>
   </div>
 
@@ -357,176 +349,322 @@
     <button class="filter-btn active">همه</button>
     <button class="filter-btn">رمان</button>
     <button class="filter-btn">کلاسیک</button>
-    <button class="filter-btn">راز و معما</button>
+    <button class="filter-btn">فانتزی</button>
+    <button class="filter-btn">کارآگاهی و معمایی</button>
+    <button class="filter-btn">شعر</button>
+    <button class="filter-btn">نوجوان</button>
   </div>
 
   <div class="books-list">
 
-    <!-- راز داوینچی -->
     <div class="book-card">
       <div class="book-spine"></div>
       <div class="book-cover-wrap">
-        <img src="30e322f9ec1afa32968daff7b950726d0af024cf_1623131253.jpg" alt="راز داوینچی" />
+        <div class="no-cover">📖</div>
       </div>
       <div class="book-info">
         <div>
-          <div class="book-genre">راز و معما · ترلر</div>
-          <div class="book-title">راز داوینچی</div>
+          <div class="book-genre">فانتزی/نوجوان</div>
+          <div class="book-title">مجموعه فابل (۲ جلدی)</div>
           <div class="book-meta">
-            <div class="book-meta-row"><strong>به قلم:</strong> دن براون</div>
-            <div class="book-meta-row"><strong>ترجمه:</strong> حسین شهرابی</div>
-            <div class="book-meta-row"><strong>انتشارات:</strong> کتابسرای تندیس</div>
+            <div class="book-meta-row"><strong>به قلم:</strong> آدریان یانگ</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> پگاه حدادی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کتاب مجازی</div>
           </div>
         </div>
         <div class="book-footer">
-          <div class="stars">
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star">★</span>
-          </div>
-          <span class="book-status status-read">خوانده شده</span>
+          <span class="book-status status-read">در کتابخانه</span>
         </div>
       </div>
     </div>
 
-    <!-- کمدی الهی -->
     <div class="book-card">
       <div class="book-spine"></div>
       <div class="book-cover-wrap">
-        <div class="no-cover">🔥</div>
+        <div class="no-cover">📖</div>
       </div>
       <div class="book-info">
         <div>
-          <div class="book-genre">کلاسیک · حماسه</div>
-          <div class="book-title">کمدی الهی</div>
+          <div class="book-genre">فلسفه</div>
+          <div class="book-title">در باب حکمت زندگی</div>
           <div class="book-meta">
-            <div class="book-meta-row"><strong>به قلم:</strong> دانته آلیگیری</div>
+            <div class="book-meta-row"><strong>به قلم:</strong> آرتور شوپنهاور</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محمد مبشری</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> نیلوفر</div>
           </div>
         </div>
         <div class="book-footer">
-          <div class="stars">
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-          </div>
-          <span class="book-status status-read">خوانده شده</span>
+          <span class="book-status status-read">در کتابخانه</span>
         </div>
       </div>
     </div>
 
-    <!-- رنج‌های ورتر جوان -->
     <div class="book-card">
       <div class="book-spine"></div>
       <div class="book-cover-wrap">
-        <div class="no-cover">💔</div>
+        <div class="no-cover">📖</div>
       </div>
       <div class="book-info">
         <div>
-          <div class="book-genre">کلاسیک · رمانتیک</div>
-          <div class="book-title">رنج‌های ورتر جوان</div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">اتود در قرمز لاکی</div>
           <div class="book-meta">
-            <div class="book-meta-row"><strong>به قلم:</strong> یوهان ولفگانگ فون گوته</div>
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
           </div>
         </div>
         <div class="book-footer">
-          <div class="stars">
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star">★</span>
-          </div>
-          <span class="book-status status-read">خوانده شده</span>
+          <span class="book-status status-read">در کتابخانه</span>
         </div>
       </div>
     </div>
 
-    <!-- تیمارستان متروک -->
     <div class="book-card">
       <div class="book-spine"></div>
       <div class="book-cover-wrap">
-        <div class="no-cover">🏚️</div>
+        <div class="no-cover">📖</div>
       </div>
       <div class="book-info">
         <div>
-          <div class="book-genre">راز و معما · وحشت</div>
-          <div class="book-title">تیمارستان متروک</div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">نشانه چهار</div>
           <div class="book-meta">
-            <div class="book-meta-row"><strong>به قلم:</strong> دن پبلاکی</div>
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
           </div>
         </div>
         <div class="book-footer">
-          <div class="stars">
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star">★</span>
-          </div>
-          <span class="book-status status-read">خوانده شده</span>
+          <span class="book-status status-read">در کتابخانه</span>
         </div>
       </div>
     </div>
 
-    <!-- نجواگر -->
     <div class="book-card">
       <div class="book-spine"></div>
       <div class="book-cover-wrap">
-        <div class="no-cover">🌑</div>
+        <div class="no-cover">📖</div>
       </div>
       <div class="book-info">
         <div>
-          <div class="book-genre">راز و معما · جنایی</div>
-          <div class="book-title">نجواگر</div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">درنده باسکرویل</div>
           <div class="book-meta">
-            <div class="book-meta-row"><strong>به قلم:</strong> الکس نورث</div>
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
           </div>
         </div>
         <div class="book-footer">
-          <div class="stars">
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-            <span class="star filled">★</span>
-          </div>
-          <span class="book-status status-read">خوانده شده</span>
+          <span class="book-status status-read">در کتابخانه</span>
         </div>
       </div>
     </div>
 
-  </div>
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">برق نقره‌ای</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> کریم امامی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
 
-  <footer>
-    دفتر شخصی امید &nbsp;·&nbsp; ساخته شده با دقت و علاقه
-  </footer>
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">سرباز رنگ پریده</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حشمت الله صباغی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
 
-  <script>
-    const btns = document.querySelectorAll('.filter-btn');
-    btns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        btns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">حلقه سرخ</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
 
-    var themeToggle = document.getElementById('theme-toggle');
-    var savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">مردان رقصان</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حشمت الله صباغی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
 
-    themeToggle.addEventListener('click', function() {
-      var current = document.documentElement.getAttribute('data-theme');
-      var next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
-    });
-  </script>
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">رسوایی در کشور بوهم</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> کریم امامی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
 
-</body>
-</html>
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">جعبه مقوایی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">خون آشام ساسکس</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حشمت الله صباغی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">قتل در قطار سریع السیر شرق</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آگاتا کریستی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محمد گذرآبادی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">جنایت در شب آتش بازی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آگاتا کریستی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حمیدرضا بلندسران</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">شبح مرگ بر فراز نیل</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آگاتا کریستی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> نیما حضرتی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+ 
