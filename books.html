@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>امید | دفتر ذهن</title>
+  <title>امید | کتاب‌ها</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;600&family=Markazi+Text:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -43,28 +43,9 @@
       font-family: var(--ff-body);
       font-weight: 300;
       line-height: 1.9;
-      position: relative;
     }
 
-    .top-frame {
-      position: relative;
-    }
-
-    .corner-art {
-      position: absolute;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.55;
-    }
-
-    .corner-art.top-right { top: 60px; right: 0; width: 280px; }
-    .corner-art.bottom-left { bottom: 0; left: 0; width: 280px; transform: rotate(180deg); }
-
-    nav, .hero, .quote-strip, .section-head, .chapters, footer {
-      position: relative;
-      z-index: 1;
-    }
-
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -72,7 +53,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1.5rem;
+      padding: 0 3rem;
       height: 60px;
       background: rgba(250,249,247,0.92);
       backdrop-filter: blur(12px);
@@ -103,155 +84,35 @@
       color: var(--ink);
       text-decoration: none;
     }
-
     .nav-brand span { color: var(--gold); }
 
-    .hamburger {
+    .nav-links {
       display: flex;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 0.5rem;
-      background: none;
-      border: none;
-      z-index: 310;
+      gap: 2rem;
+      list-style: none;
     }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--ink);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* OVERLAY */
-    .drawer-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-      z-index: 290;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-
-    .drawer-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* DRAWER */
-    .drawer {
-      position: fixed;
-      top: 0;
-      right: -320px;
-      width: 300px;
-      height: 100vh;
-      background: var(--paper);
-      z-index: 300;
-      border-left: 1px solid var(--border);
-      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      overflow-y: auto;
-      padding: 5rem 0 2rem;
-    }
-
-    .drawer.open { right: 0; }
-
-.drawer-brand {
-      padding: 0 1.75rem 1.5rem;
-      font-family: var(--ff-title);
-      font-size: 1.2rem;
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
       color: var(--ink-soft);
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 1rem;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
     }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
 
-    .drawer-item {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .drawer-link {
+    /* PAGE HEADER */
+    .page-header {
+      padding: 8rem 3rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
-      padding: 1rem 1.75rem;
-      font-size: 1rem;
-      color: var(--ink);
-      text-decoration: none;
-      font-family: var(--ff-title);
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      background: none;
-      border: none;
-      width: 100%;
-      text-align: right;
-    }
-
-    .drawer-link:hover { background: var(--gold-pale); color: var(--gold); }
-
-    .drawer-link .arrow {
-      font-size: 0.75rem;
-      color: var(--ink-soft);
-      transition: transform 0.25s;
-    }
-
-    .drawer-link.expanded .arrow { transform: rotate(90deg); }
-
-    .drawer-sub {
-      display: none;
-      background: var(--paper-2);
-    }
-
-    .drawer-sub.open { display: block; }
-
-    .drawer-sub a {
-      display: block;
-      padding: 0.65rem 2.5rem;
-      font-size: 0.88rem;
-      color: var(--ink-mid);
-      text-decoration: none;
       border-bottom: 1px solid var(--border);
-      transition: color 0.2s, background 0.2s;
     }
 
-    .drawer-sub a:last-child { border-bottom: none; }
-    .drawer-sub a:hover { color: var(--gold); background: var(--gold-pale); }
-
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 60px;
-    }
-
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 5rem 4rem 5rem 5rem;
-      border-left: 1px solid var(--border);
-    }
-
-    .hero-grand {
-      font-family: var(--ff-title);
-      font-size: 1.45rem;
-      font-weight: 600;
-      color: var(--gold);
-      line-height: 2.3;
-      max-width: 460px;
-      margin-bottom: 2rem;
-    }
-
-    .hero-tag {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
@@ -260,267 +121,188 @@
       text-transform: uppercase;
       color: var(--gold);
       font-weight: 600;
-      margin-bottom: 2rem;
+      margin-bottom: 0.75rem;
     }
-
-    .hero-tag::before {
+    .eyebrow::before {
       content: '';
       display: block;
-      width: 28px;
+      width: 24px;
       height: 1px;
       background: var(--gold);
     }
 
-    .hero-title {
+    .page-header h1 {
       font-family: var(--ff-title);
-      font-size: clamp(2.4rem, 4vw, 3.8rem);
-      line-height: 1.4;
+      font-size: 2.8rem;
       color: var(--ink);
-      margin-bottom: 1.5rem;
     }
 
-    .hero-title em {
-      font-style: normal;
+    .count-badge {
+      display: inline-block;
+      background: var(--gold-pale);
       color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
     }
 
-    .hero-desc {
-      font-size: 0.95rem;
-      color: var(--ink-mid);
-      max-width: 380px;
-      line-height: 2;
-      margin: 0 auto 3rem;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
+    /* FILTER BAR */
+    .filter-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 3rem;
+      display: flex;
       gap: 0.75rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4rem 1.1rem;
+      font-family: var(--ff-body);
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
       background: var(--ink);
       color: #fff;
-      text-decoration: none;
-      font-size: 0.84rem;
-      font-weight: 400;
-      padding: 0.85rem 1.75rem;
-      border-radius: 100px;
-      transition: background 0.2s, gap 0.2s;
-      width: fit-content;
+      border-color: var(--ink);
     }
 
-    .hero-cta:hover { background: var(--gold); gap: 1.1rem; }
-
-    .hero-right {
+    /* BOOKS LIST */
+    .books-list {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 3rem 6rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: var(--paper-2);
-      padding: 5rem 3rem;
-      position: relative;
-      overflow: hidden;
+      gap: 1.5rem;
     }
 
-    .hero-right::before {
-      content: '';
-      position: absolute;
-      width: 480px;
-      height: 480px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23b8933a' stroke-width='1.5' opacity='0.18'%3E%3Ccircle cx='200' cy='200' r='150'/%3E%3Ccircle cx='200' cy='200' r='110'/%3E%3Cpath d='M200 50 C260 90 300 140 300 200
-
-C300 260 260 310 200 350 C140 310 100 260 100 200 C100 140 140 90 200 50 Z'/%3E%3Cpath d='M200 90 C150 130 130 165 130 200 C130 235 150 270 200 310 C250 270 270 235 270 200 C270 165 250 130 200 90 Z'/%3E%3Cpath d='M50 200 Q 200 150 350 200'/%3E%3Cpath d='M50 200 Q 200 250 350 200'/%3E%3C/g%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-size: contain;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      width: 100%;
-      max-width: 340px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .stat-card {
+    /* BOOK CARD - horizontal */
+    .book-card {
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .stat-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
-
-    .stat-num {
-      font-family: var(--ff-title);
-      font-size: 2rem;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-
-    .stat-label {
-      font-size: 0.74rem;
-      color: var(--ink-soft);
-    }
-
-    .stat-card.wide {
-      grid-column: span 2;
-      text-align: right;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.25rem 1.5rem;
-    }
-
-    .stat-card.wide .stat-icon { font-size: 1.4rem; margin: 0; }
-
-    .wide-text .stat-label { display: block; margin-bottom: 0.2rem; }
-
-    .wide-text .stat-quote {
-      font-family: var(--ff-title);
-      font-size: 0.95rem;
-      color: var(--ink);
-      line-height: 1.7;
-    }
-
-    .quote-strip {
-      background: var(--ink);
-      color: #fff;
-      padding: 4rem 3rem;
-      text-align: center;
-    }
-
-    .quote-strip blockquote {
-      font-family: var(--ff-title);
-      font-size: clamp(1.15rem, 2.5vw, 1.65rem);
-      line-height: 2.1;
-      max-width: 700px;
-      margin: 0 auto 1rem;
-    }
-
-    .quote-strip cite {
-      font-size: 0.8rem;
-      color: var(--gold);
-      letter-spacing: 0.08em;
-      font-style: normal;
-    }
-
-    .section-head {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5rem 3rem 2rem;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-head h2 {
-      font-family: var(--ff-title);
-      font-size: 2rem;
-    }
-
-    .section-head p {
-      font-size: 0.82rem;
-      color: var(--ink-soft);
-    }
-
-    .chapters {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 3rem 6rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .chapter {
-      padding: 2.5rem;
-      border-left: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      position: relative;
       overflow: hidden;
-    }
-
-    .chapter:nth-child(3n+1) { border-right: 1px solid var(--border); }
-    .chapter:nth-child(1),
-    .chapter:nth-child(2),
-    .chapter:nth-child(3) { border-top: 1px solid var(--border); }
-
-    .chapter::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--gold-pale);
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-
-    .chapter:hover::after { opacity: 1; }
-
-    .chapter-inner { position: relative; z-index: 1; }
-
-    .chapter-num {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 1.25rem;
-    }
-
-    .chapter-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 1.25rem;
-      background: var(--paper-2);
-      border: 1px solid var(--border);
-      transition: background 0.2s, border-color 0.2s;
+      flex-direction: row;
+      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
     }
 
-    .chapter:hover .chapter-icon {
-      background: #fff;
+    .book-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
       border-color: var(--gold);
     }
 
-    .chapter-title {
-      font-family: var(--ff-title);
-      font-size: 1.3rem;
-      color: var(--ink);
+    /* colored left spine */
+    .book-spine {
+      width: 6px;
+      flex-shrink: 0;
+      background: linear-gradient(180deg, var(--gold), #d4a853);
+    }
+
+    /* cover image - right side (RTL so it appears on right) */
+    .book-cover-wrap {
+      width: 130px;
+      min-height: 180px;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: var(--paper-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0.75rem;
+      align-self: stretch;
+    }
+
+    .book-cover-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .book-cover-wrap .no-cover {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--border);
+    }
+
+    /* info - left side */
+    .book-info {
+      flex: 1;
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .book-genre {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
       margin-bottom: 0.6rem;
     }
 
-.chapter-desc {
-      font-size: 0.82rem;
+    .book-title {
+      font-family: var(--ff-title);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .book-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .book-meta-row {
+      font-size: 0.8rem;
       color: var(--ink-soft);
-      line-height: 1.8;
+      display: flex;
+      gap: 0.4rem;
     }
 
-    .chapter-arrow {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 2.5rem;
-      font-size: 1rem;
-      color: var(--gold);
-      opacity: 0;
-      transform: translateX(-6px);
-      transition: opacity 0.2s, transform 0.2s;
-      z-index: 1;
+    .book-meta-row strong {
+      color: var(--ink-mid);
+      font-weight: 400;
     }
 
-    .chapter:hover .chapter-arrow { opacity: 1; transform: translateX(0); }
+    .book-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
 
+    .book-status {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+    }
+
+    .status-read { background: #e8f5e9; color: #2e7d32; }
+
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 2rem;
@@ -529,181 +311,1864 @@ C300 260 260 310 200 350 C140 310 100 260 100 200 C100 140 140 90 200 50 Z'/%3E%
       color: var(--ink-soft);
     }
 
-    @media (max-width: 768px) {
-      nav { padding: 0 1.5rem; }
+    @media (max-width: 600px) {
+      nav { padding: 0 1.25rem; }
       .nav-links { gap: 1rem; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 4rem 1.75rem; border-left: none; }
-      .hero-right { display: none; }
-      .chapters { grid-template-columns: 1fr; padding: 0 1.5rem 4rem; }
-      .chapter:nth-child(3n+1) { border-right: none; }
-      .section-head { padding: 3rem 1.5rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .page-header { padding: 6rem 1.25rem 2rem; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .books-list { padding: 1.5rem 1.25rem 4rem; }
+      .filter-bar { padding: 1rem 1.25rem; flex-wrap: wrap; }
+      .book-cover-wrap { width: 90px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="drawer-overlay" id="overlay"></div>
-  <div class="drawer" id="drawer">
-    <div class="drawer-brand">دفتر امید</div>
-    <div class="drawer-item">
-      <button class="drawer-link" id="books-btn">
-         کتاب‌ها
-        <span class="arrow">›</span>
-      </button>
-      <div class="drawer-sub" id="sub-books">
-        <a href="books.html">کتاب‌هایی که خوندم</a>
-        <a href="#">کتاب‌هایی که خوندم و دوستشون داشتم</a>
-        <a href="#">کتاب‌هایی که خوندم و دوستشون نداشتم</a>
-        <a href="#">کتاب‌هایی که می‌خوام بخونم</a>
-      </div>
-    </div>
-    <div class="drawer-item"><a class="drawer-link" href="#"> جملات</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#"> شعر</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#">موسیقی</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#"> درباره من</a></div>
-  </div>
-
-  <div class="top-frame">
-
-  <!-- Decorative corner illumination (top-right) -->
-  <svg class="corner-art top-right" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#b8933a" stroke-width="1.1">
-      <!-- main vine -->
-      <path d="M280 40 C 230 30, 190 50, 165 90 C 140 130, 130 170, 95 195"/>
-      <path d="M280 10 C 220 5, 175 30, 150 70"/>
-      <!-- flower cluster 1 -->
-      <g transform="translate(230,35)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <!-- leaf -->
-      <path d="M205 55 C 195 60, 190 70, 195 80 C 205 75, 210 65, 205 55 Z"/>
-      <!-- flower cluster 2 -->
-      <g transform="translate(170,95) scale(0.8)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <path d="M150 110 C 138 112, 130 120, 132 130 C 144 128, 152 120, 150 110 Z"/>
-      <!-- flower cluster 3, smaller, trailing -->
-      <g transform="translate(108,175) scale(0.6)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <!-- small cloud, floating apart from vine -->
-      <g transform="translate(70,55)" opacity="0.85">
-
-<path d="M0 10 C -8 10, -8 0, 0 0 C 1 -6, 11 -6, 13 0 C 20 -1, 22 9, 14 10 Z"/>
-      </g>
-      <!-- tiny bird -->
-      <g transform="translate(48,90)" opacity="0.8">
-        <path d="M0 0 C 5 -4, 10 -3, 14 0 C 10 0, 6 2, 0 0 Z"/>
-        <path d="M14 0 C 18 -3, 24 -2, 28 2"/>
-      </g>
-    </g>
-  </svg>
-
-  <!-- Decorative corner illumination (bottom-left, mirrored) -->
-  <svg class="corner-art bottom-left" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-    <g fill="none" stroke="#b8933a" stroke-width="1.1">
-      <path d="M280 40 C 230 30, 190 50, 165 90 C 140 130, 130 170, 95 195"/>
-      <path d="M280 10 C 220 5, 175 30, 150 70"/>
-      <g transform="translate(230,35)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <path d="M205 55 C 195 60, 190 70, 195 80 C 205 75, 210 65, 205 55 Z"/>
-      <g transform="translate(170,95) scale(0.8)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="8" cy="6" rx="6" ry="4" transform="rotate(40 8 6)"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7" transform="rotate(-20 -2 9)"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <path d="M150 110 C 138 112, 130 120, 132 130 C 144 128, 152 120, 150 110 Z"/>
-      <g transform="translate(108,175) scale(0.6)">
-        <circle r="4"/>
-        <ellipse cx="0" cy="-9" rx="4" ry="7"/>
-        <ellipse cx="8" cy="-4" rx="7" ry="4"/>
-        <ellipse cx="-2" cy="9" rx="4" ry="7"/>
-        <ellipse cx="-9" cy="0" rx="7" ry="4"/>
-      </g>
-      <g transform="translate(70,55)" opacity="0.85">
-        <path d="M0 10 C -8 10, -8 0, 0 0 C 1 -6, 11 -6, 13 0 C 20 -1, 22 9, 14 10 Z"/>
-      </g>
-    </g>
-  </svg>
-
-  <div class="drawer-overlay" id="overlay"></div>
-  <div class="drawer" id="drawer">
-    <div class="drawer-brand">فهرست</div>
-    <div class="drawer-item">
-      <button class="drawer-link" id="books-btn">
-        کتاب‌ها
-        <span class="arrow">›</span>
-      </button>
-      <div class="drawer-sub" id="sub-books">
-        <a href="books.html">کتاب‌هایی که خوندم</a>
-        <a href="#">کتاب‌هایی که دوستشون داشتم</a>
-        <a href="#">کتاب‌هایی که دوستشون نداشتم</a>
-        <a href="#">کتاب‌هایی که می‌خوام بخونم</a>
-      </div>
-    </div>
-    <div class="drawer-item"><a class="drawer-link" href="#">جملات</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#">شعر</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#">موسیقی</a></div>
-    <div class="drawer-item"><a class="drawer-link" href="#">درباره من</a></div>
-  </div>
-
   <nav>
-    <a href="#" class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </a>
-    <a class="nav-brand" href="#">امید<span>.</span></a>
+    <a class="nav-brand" href="index.html">امید<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="books.html" class="active">کتاب‌ها</a></li>
+      <li><a href="#">جملات</a></li>
+      <li><a href="#">شعر</a></li>
+      <li><a href="#">موسیقی</a></li>
+      <li><a href="index.html">خانه</a></li>
+    </ul>
     <button class="theme-toggle" id="theme-toggle">🌙</button>
   </nav>
 
-  <section class="hero">
-    <div class="hero-left">
-      <p class="hero-grand">
-        ای کسانی که دیده‌ی بصیرت را مسخر خویش کرده‌اید،<br/>
-        حقیقتی را دریابید که در زیر حجاب این اشعار اسرارآمیز است
-      </p>
-      <span class="hero-tag">دفتر شخصی</span>
-      <h1 class="hero-title">
-        آنچه<br/>
-        می‌خوانم<br/>
-        <em>می‌اندیشم</em>
-      </h1>
-      <p class="hero-desc">
-        فضایی برای ثبت آنچه ذهنم را درگیر کرده — از کتاب و شعر تا موسیقی و ایده.
-      </p>
-      <a href="#chapters" class="hero-cta">کاوش کن ←</a>
+  <div class="page-header">
+    <div>
+      <div class="eyebrow">فصل اول</div>
+      <h1>کتاب‌ها</h1>
+    </div>
+    <div>
+      <div class="count-badge">📚 ۸۵ کتاب</div>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">همه</button>
+    <button class="filter-btn" data-filter="novel">رمان</button>
+    <button class="filter-btn" data-filter="classic">کلاسیک</button>
+    <button class="filter-btn" data-filter="fantasy">فانتزی</button>
+    <button class="filter-btn" data-filter="mystery">کارآگاهی و معمایی</button>
+    <button class="filter-btn" data-filter="poetry">شعر</button>
+    <button class="filter-btn" data-filter="teen">نوجوان</button>
+  </div>
+
+  <div class="books-list">
+
+    <div class="book-card" data-genres="fantasy teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی/نوجوان</div>
+          <div class="book-title">مجموعه فابل (۲ جلدی)</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آدریان یانگ</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> پگاه حدادی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کتاب مجازی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
     </div>
 
-    <div class="hero-right">
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-icon">📚</div>
-          <div class="stat-num">٤٧</div>
-          <div class="stat-label">کتاب خوانده</div>
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فلسفه</div>
+          <div class="book-title">در باب حکمت زندگی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آرتور شوپنهاور</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محمد مبشری</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> نیلوفر</div>
+          </div>
         </div>
-        <div
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">اتود در قرمز لاکی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">نشانه چهار</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">درنده باسکرویل</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">برق نقره‌ای</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> کریم امامی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">سرباز رنگ پریده</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حشمت الله صباغی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">حلقه سرخ</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">مردان رقصان</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حشمت الله صباغی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">رسوایی در کشور بوهم</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> کریم امامی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">جعبه مقوایی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">خون آشام ساسکس</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سر آرتور کانن دویل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حشمت الله صباغی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">قتل در قطار سریع السیر شرق</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آگاتا کریستی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محمد گذرآبادی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">جنایت در شب آتش بازی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آگاتا کریستی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حمیدرضا بلندسران</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">شبح مرگ بر فراز نیل</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آگاتا کریستی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> نیما حضرتی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">ورق‌های روی میز</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آگاتا کریستی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مجتبی عبدالله نژاد</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر روان‌شناختی</div>
+          <div class="book-title">سنگ کاغذ قیچی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آلیس فینی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> سونیا سینگ</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کتاب مجازی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر روان‌شناختی</div>
+          <div class="book-title">دیزی دارکر</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آلیس فینی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> سونیا سینگ</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کتاب مجازی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی فلسفی</div>
+          <div class="book-title">شازده کوچولو</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آنتوان دو سنت اگزوپری</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> ابوالحسن نجفی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> نیلوفر</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی فلسفی</div>
+          <div class="book-title">شازده کوچولو</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> آنتوان دو سنت اگزوپری</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> احمد شاملو</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> نگاه</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="poetry">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">شعر</div>
+          <div class="book-title">مثل خون در رگ‌های من</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> احمد شاملو</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> چشمه</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر/وحشت روان‌شناختی</div>
+          <div class="book-title">نجواگر</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> الکس نورث</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> میلاد بابا نژاد و الهه مرادی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> نون</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">طنز</div>
+          <div class="book-title">ماشاالله خان در دربار هارون الرشید</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> ایرج پزشکزاد</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> فرهنگ معاصر</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">طنز/رمان اجتماعی</div>
+          <div class="book-title">دایی جان ناپلئون</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> ایرج پزشکزاد</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> فرهنگ معاصر</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان عرفانی/عاشقانه</div>
+          <div class="book-title">ملت عشق</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> الیف شافاک</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> ارسلان فصیحی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> ققنوس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان کلاسیک/عاشقانه گاتیک</div>
+          <div class="book-title">بلندی‌های بادگیر</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> امیلی برونته</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> رضا رضایی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> نی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">وحشت گاتیک</div>
+          <div class="book-title">دراکولا</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> برام استوکر</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محمود گودرزی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> برج</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی/ماجراجویی نوجوان</div>
+          <div class="book-title">رستاخیز آتلانتیس</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> پیتر لنرگیس</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> زهرا توفیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">طنز سیاسی/تمثیلی</div>
+          <div class="book-title">قلعه حیوانات</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> جورج اورول</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> شهرزاد لولاچی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> افق</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی</div>
+          <div class="book-title">مجموعه هری پاتر (۱۳ جلدی)</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> جی کی رولینگ</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> ویدا اسلامیه</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کتابسرای تندیس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان الهام‌بخش/فلسفی</div>
+          <div class="book-title">پاندای بزرگ و اژدهای کوچک</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> جیمز نوربری</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> نازنین فیروزی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> میلکان</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر روان‌شناختی</div>
+          <div class="book-title">زمان اشتباه مکان اشتباه</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> جیلیان مک آلیستر</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> روناک احمدی آهنگر</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> نون</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">دیستوپیا/ماجراجویی نوجوان</div>
+          <div class="book-title">قرنطینه</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> جنیفر ای نیلسن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> فرزانه مختاری</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">دیستوپیا/ماجراجویی نوجوان</div>
+          <div class="book-title">یادم دادی شجاع باشم</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> جنیفر ای نیلسن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> فاطمه پارسا</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">دیستوپیا/ماجراجویی نوجوان</div>
+          <div class="book-title">نجات</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> جنیفر ای نیلسن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> نیلوفر عزیزپور</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">دیستوپیا/ماجراجویی نوجوان</div>
+          <div class="book-title">یک شب فاصله</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> جنیفر ای نیلسن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> عادله قلی‌پور</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">دیستوپیا/ماجراجویی نوجوان</div>
+          <div class="book-title">واژه‌ها در آتش</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> جنیفر ای نیلسن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> آرزو قلی‌زاده</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">الهام‌بخش/مصور</div>
+          <div class="book-title">پسرک موش کور روباه و اسب</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> چارلی مکسی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> سید وحید کریمیان</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> میلکان</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر معمایی</div>
+          <div class="book-title">فرشتگان و شیاطین</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> دن براون</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حسین شهرابی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کتابسرای تندیس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <img src="30e322f9ec1afa32968daff7b950726d0af024cf_1623131253.jpg" alt="راز داوینچی" />
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر معمایی</div>
+          <div class="book-title">راز داوینچی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> دن براون</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حسین شهرابی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کتابسرای تندیس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر معمایی</div>
+          <div class="book-title">دوزخ</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> دن براون</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حسین شهرابی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کتابسرای تندیس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر معمایی</div>
+          <div class="book-title">خاستگاه</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> دن براون</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حسین شهرابی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کتابسرای تندیس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر معمایی</div>
+          <div class="book-title">نماد گمشده</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> دن براون</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حسین شهرابی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> افق</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">وحشت/ماجراجویی نوجوان</div>
+          <div class="book-title">کابوس زدگان</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> دن پوبلاکی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مروا باقریان</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">وحشت/ماجراجویی نوجوان</div>
+          <div class="book-title">تیمارستان متروک</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> دن پوبلاکی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مروا باقریان</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">ماجراجویی کلاسیک</div>
+          <div class="book-title">جزیره گنج</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> رابرت لویی استیونسن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محسن سلیمانی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> افق</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">علمی‌تخیلی/دیستوپیا</div>
+          <div class="book-title">فارنهایت ۴۵۱</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> ری بردبری</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مژده دقیقی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> ماهی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی/ماجراجویی نوجوان</div>
+          <div class="book-title">مجموعه مایکل وی (۱۰ جلدی)</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> ریچارد پل ایوانز</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> فرانک معنوی امین و مروا باقریان</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی/اساطیری نوجوان</div>
+          <div class="book-title">مجموعه مگنس چیس</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> ریک ریوردن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> آرزو مقدس</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">طنز سیاه</div>
+          <div class="book-title">مغازه خودکشی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> ژان تولی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> احسان کرم ویسی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> چشمه</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic poetry">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">شعر کلاسیک/اخلاقی</div>
+          <div class="book-title">بوستان سعدی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سعدی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> ققنوس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان اجتماعی/تاریخی</div>
+          <div class="book-title">سووشون</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سیمین دانشور</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> امیرکبیر</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی نوجوان</div>
+          <div class="book-title">مجموعه خوب‌های بد بدهای خوب (۲ جلد)</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> سومان چینانی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> نعیمه حسینی و نگار شجاعی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی نوجوان</div>
+          <div class="book-title">اخگری در خاکستر</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> صبا طاهر</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مریم رفیعی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کتاب مجازی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">قصه‌های کلاسیک</div>
+          <div class="book-title">هزار و یک شب</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> عبدالطیف طسوجی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> نرگس آبیار</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پیدایش</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic poetry">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">شعر کلاسیک/فلسفی</div>
+          <div class="book-title">رباعیات خیام</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> عمر خیام</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> خوب</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان کلاسیک روسی/روان‌شناختی</div>
+          <div class="book-title">قلب ضعیف و بوبوک</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> فئودور داستایفسکی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> یلدا بیدختی نژاد</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> چشمه</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان کلاسیک روسی/روان‌شناختی</div>
+          <div class="book-title">نازنین</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> فئودور داستایفسکی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> یلدا بیدختی نژاد</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> چشمه</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان کلاسیک روسی/روان‌شناختی</div>
+          <div class="book-title">بانوی میزبان</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> فئودور داستایفسکی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> سروش حبیبی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> ماهی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان کلاسیک روسی/روان‌شناختی</div>
+          <div class="book-title">یک اتفاق مسخره</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> فئودور داستایفسکی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> میترا نظریان</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> ماهی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان کلاسیک روسی/روان‌شناختی</div>
+          <div class="book-title">شب‌های روشن</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> فئودور داستایفسکی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> سروش حبیبی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> ماهی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر روان‌شناختی</div>
+          <div class="book-title">در قفل شده</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> فریدا مک فادن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> علیرضا میلانلو</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کوله پشتی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر روان‌شناختی</div>
+          <div class="book-title">بخش دی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> فریدا مک فادن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> صبا ایمانی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> نون</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">تریلر روان‌شناختی</div>
+          <div class="book-title">یادت هست؟</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> فریدا مک فادن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> نشاط رحمانی نژاد</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> ماهی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">قصه کودک</div>
+          <div class="book-title">پینوکیو</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> کارلو کلودی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مصطفی رحماندوست</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> قدیانی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="teen novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان نوجوان/احساسی</div>
+          <div class="book-title">پاستیل‌های بنفش</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> کاترین اپلگیت</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> آناهیتا حضرتی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی نوجوان</div>
+          <div class="book-title">مجموعه قصه‌های همیشگی (۶ جلدی)</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> کریس کالفر</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> الهام فیاضی و آناهیتا شمس آوری</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">وحشت نوجوان</div>
+          <div class="book-title">قصه‌های ترسناک عمو مونتاگ</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> کریس پریستلی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> قاسم مومنی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان روان‌شناختی/نوآر</div>
+          <div class="book-title">خاطرات یک آدمکش</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> کیم یونگ‌-ها</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> خاطره کردکریمی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> چشمه</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="teen novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان تاریخی نوجوان</div>
+          <div class="book-title">مجموعه جنگی که نجاتم داد (۲ جلدی)</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> کیمبرلی بروبیکر بردلی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مرضیه ورشوساز</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان رمانتیک کلاسیک</div>
+          <div class="book-title">رنج‌های ورتر جوان</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> یوهان ولفگانگ فون گوته</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محمود حدادی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> ماهی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان فلسفی/کلاسیک</div>
+          <div class="book-title">مرگ ایوان ایلیچ</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> لئو تولستوی</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> سروش حبیبی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> چشمه</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">ماجراجویی کلاسیک</div>
+          <div class="book-title">هاکلبری فین</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> مارک تواین</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محسن سلیمانی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> افق</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy teen">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی نوجوان</div>
+          <div class="book-title">مجموعه مدرسه عالی شرارت (۲ جلد)</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> مارک والدن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> مهسا ملک مرزبان</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="fantasy">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">فانتزی فلسفی</div>
+          <div class="book-title">کتابخانه نیمه شب</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> مت هیگ</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محمد صالح نورانی زاده</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> کوله پشتی</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic poetry">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">شعر کلاسیک/عاشقانه</div>
+          <div class="book-title">لیلی و مجنون</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> نظامی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پیدایش</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">علمی‌تخیلی دیستوپیایی</div>
+          <div class="book-title">مجموعه داس مرگ (۳ جلدی)</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> نیل شوسترمن</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> آرزو مقدس</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="mystery">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">کارآگاهی/معمایی</div>
+          <div class="book-title">وحشت در خیابان وست اند</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> نیکولاس میر</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محمدعلی ایزدی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> هرمس</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان اجتماعی/تاریخی</div>
+          <div class="book-title">کلبه عمو تام</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> هریت بیچر استو</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محسن سلیمانی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> افق</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">ماجراجویی کلاسیک</div>
+          <div class="book-title">رابین هود</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> هوارد پایل</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> صدیقه ابراهیمی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پنجره</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="classic novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان اجتماعی/کلاسیک</div>
+          <div class="book-title">مجموعه بینوایان (۲ جلدی)</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> ویکتور هوگو</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> محسن سلیمانی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> افق</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان اجتماعی/فلسفی</div>
+          <div class="book-title">آخرین روز یک محکوم</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> ویکتور هوگو</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> بنفشه فریس آبادی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> چشمه</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">زندگی‌نامه</div>
+          <div class="book-title">آلبرت اینشتین</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> ویل مارا</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> نسرین نوش امینی</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> پرتقال</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">اساطیر یونان</div>
+          <div class="book-title">خدایان، پهلوانان و انسان در یونان باستان</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> ویلیام هنری دنهام راوس</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> علیرضا قربانیان</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> امیرکبیر</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card" data-genres="novel">
+      <div class="book-spine"></div>
+      <div class="book-cover-wrap">
+        <div class="no-cover">📖</div>
+      </div>
+      <div class="book-info">
+        <div>
+          <div class="book-genre">رمان فلسفی</div>
+          <div class="book-title">دنیای صوفی</div>
+          <div class="book-meta">
+            <div class="book-meta-row"><strong>به قلم:</strong> یوستین گودر</div>
+            <div class="book-meta-row"><strong>ترجمه:</strong> حسن کامشاد</div>
+            <div class="book-meta-row"><strong>انتشارات:</strong> نیلوفر</div>
+          </div>
+        </div>
+        <div class="book-footer">
+          <span class="book-status status-read">در کتابخانه</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    دفتر شخصی امید &nbsp;·&nbsp; ساخته شده با دقت و علاقه
+  </footer>
+
+  <script>
+    const btns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.book-card');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        cards.forEach(card => {
+          const genres = (card.getAttribute('data-genres') || '').split(' ');
+          const show = filter === 'all' || genres.includes(filter);
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+
+    var themeToggle = document.getElementById('theme-toggle');
+    var savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    themeToggle.addEventListener('click', function() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
+
+</body>
+</html>
